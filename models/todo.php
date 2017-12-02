@@ -12,11 +12,16 @@ final class todo extends database\model
     public $isdone;
     protected static $modelName = 'todo';
 
-    public static function getTablename()
+   /* public static function getTablename()
     {
 
         $tableName = 'todos';
         return $tableName;
+    } */
+	public function __construct()
+    {
+        $this->tableName = 'todos';
+	
     }
 }
 

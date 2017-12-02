@@ -56,13 +56,12 @@ class tasksController extends http\controller
 	$upRecord->owneremail = $_POST['owneremail'];
 	$upRecord->duedate = $_POST['duedate'];
 	$upRecord->message = $_POST['message'];
-    //$upRecord->save();
-		echo $upRecord;
-	self::getTemplate('show_task', $record);
+    $upRecord->save();
+	//self::getTemplate('show_task', $record);
 		
 		
         //echo $upRecord;
-		//header('index.php?page=tasks&action=show&id='. $_REQUEST['id']);
+		header('index.php?page=tasks&action=show&id='. $_REQUEST['id']);
 
     }
 

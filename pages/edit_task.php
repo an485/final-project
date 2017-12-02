@@ -20,7 +20,7 @@
 <form action="index.php?page=tasks&action=store&id=<?php echo $data->id; ?>" method="post" id="updateForm">
      <div class="container edittask">
 <?php print utility\htmlTable::generateFormFromOneRecord($data); ?>
-<button type="submit" form="form2" value="store">Save</button></div></form>
+<button type="submit" form="updateForm" value="store">Save</button></div></form>
  <a href="index.php?page=tasks&action=show&id=<?php echo $data->id; ?> "><button class="edit">Cancel</button></a><hr>
 
 <form action="index.php?page=deleted&action=delete&id=<?php echo $data->id; ?> " method="post" id="form1">

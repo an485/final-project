@@ -6,7 +6,7 @@ abstract class model
 
     public function save()
     {
-        if ($this->id != '') {
+       /* if ($this->id != '') {
             $sql = $this->update();
         } else {
             $sql = $this->insert();
@@ -33,7 +33,18 @@ abstract class model
         }
 
 
-        return $this->id;
+        return $this->id; */
+		
+		
+		// TEST mine form Active record
+		 $db = dbConn::getConnection();
+		if (!isset($this->id)) {
+            $sql = $this->insert();
+        } else {
+            $sql = $this->update();
+        }
+        $statement = $db->prepare($sql);
+        $statement->execute();
 
     }
 
@@ -52,13 +63,15 @@ abstract class model
 
     private function update()
     {
-
-        $modelName = static::$modelName;
-        $tableName = $modelName::getTablename();
+      
+       $modelName = static::$modelName;
+       // $tableName = $modelName::getTablename();
         $array = get_object_vars($this);
-
+		 array_pop($array);
+        array_shift($array);
         $comma = " ";
-        $sql = 'UPDATE ' . $tableName . ' SET ';
+      //  $sql = 'UPDATE ' . $tableName . ' SET ';
+		 $sql = 'UPDATE ' . $this->tableName . ' SET ';
         foreach ($array as $key => $value) {
             if (!empty($value)) {
                 $sql .= $comma . $key . ' = "' . $value . '"';
@@ -67,7 +80,24 @@ abstract class model
         }
         $sql .= ' WHERE id=' . $this->id;
         return $sql;
-
+		//echo $sql; 
+		
+		//Test from my active record
+		/*$array = get_object_vars($this);
+	    array_pop($array);
+        array_shift($array);
+		$sql = 'UPDATE ' . $this->tableName . ' SET ';
+		foreach($array as $field => $value)
+			if (isset($value)) 
+                $values[] = $field.' = '. $value ;
+			  
+		$sql .= implode(', ', $values);	
+		$sql .= ' WHERE id=' . $this->id;
+       
+		//echo 'I just updated record ' . $this->id;
+		//return $sql;
+		echo $sql;
+*/
     }
 
     public function delete()
