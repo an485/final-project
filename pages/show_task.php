@@ -24,12 +24,11 @@ print utility\htmlTable::generateTableFromOneRecord($data);
 
 //print_r($data);
 ?>
-<form action="index.php?page=tasks&action=delete&id=<?php echo $data->id; ?> " method="post" id="form1">
+<form action="index.php?page=deleted&action=delete&id=<?php echo $data->id; ?> " method="post" id="form1">
     <button type="submit" form="form1" value="delete">Delete</button>
 </form>
-<form action="index.php?page=edit_task&action=edit&id=<?php echo $data->id; ?> " method="post" id="form2">
-    <button type="submit" form="form2" value="edit">Edit</button>
-</form>
+<a href="index.php?page=edit_task&action=edit&id=<?php echo $data->id; ?> "><button class="edit">Edit ToDo Task</button></a>
+
 
 
 

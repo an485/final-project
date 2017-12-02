@@ -16,15 +16,17 @@
 </head>
 
 <body>
-
-<form action="index.php?page=tasks&action=save&id=<?php echo $data->id; ?> " method="POST" id="updateForm">
+<h3> Edit your ToDo Task and click 'Save'</h3>
+<form action="index.php?page=tasks&action=store&id=<?php echo $data->id; ?>" method="post" id="updateForm">
      <div class="container edittask">
 <?php print utility\htmlTable::generateFormFromOneRecord($data); ?>
-<button type="submit" form="form2" value="save">Save</button></div></form><hr>
+<button type="submit" form="form2" value="store">Save</button></div></form>
+ <a href="index.php?page=tasks&action=show&id=<?php echo $data->id; ?> "><button class="edit">Cancel</button></a><hr>
 
-<form action="index.php?page=tasks&action=delete&id=<?php echo $data->id; ?> " method="post" id="form1">
+<form action="index.php?page=deleted&action=delete&id=<?php echo $data->id; ?> " method="post" id="form1">
     <button type="submit" form="form1" value="delete">Delete</button>
 </form>
+    
 
 
 

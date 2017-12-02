@@ -44,6 +44,7 @@ class htmlTable
 
         $tableGen .= '<tr>';
         foreach ($innerArray as $innerRow => $value) {
+			$innerRow = self::columnNames($innerRow);
 			if($innerRow != 'id')
             $tableGen .= '<th>' . $innerRow . '</th>';
         }
@@ -57,7 +58,28 @@ class htmlTable
         $tableGen .= '</tr></table><hr>';
         return $tableGen;
     }
-	
+	 public static function columnNames($innerRow)
+    {
+		
+            if($innerRow == 'owneremail')
+			{ $innerRow = 'Email Address'; }
+		if($innerRow == 'createddate')
+			{ $innerRow = 'Date Created'; }
+		if($innerRow == 'lastupdated')
+			{ $innerRow = 'Last Updated'; }
+		if($innerRow == 'duedate')
+			{ $innerRow = 'Due Date'; }
+		if($innerRow == 'message')
+			{ $innerRow = 'ToDo Task'; }
+		if($innerRow == 'isdone')
+			{ $innerRow = 'Is Done'; }
+		
+		else {
+				$innerRow = $innerRow;
+			}
+        return $innerRow;
+		//echo $innerRow;
+	}
 	
 	/*
 	*
@@ -73,7 +95,9 @@ class htmlTable
 
         $formGen .= '<tr>';
         foreach ($innerArray as $innerRow => $value) {
+			 $innerRow = self::columnNames($innerRow);
             if($innerRow != 'id' && $innerRow != 'ownerid')
+				
 			$formGen .= '<th>' . $innerRow . '</th>';
         }
         $formGen .= '</tr>';

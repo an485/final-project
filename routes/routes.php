@@ -114,7 +114,7 @@ class routes
 		// Update
 		$route = new route();
         $route->http_method = 'POST';
-        $route->action = 'save';
+        $route->action = 'store';
         $route->page = 'tasks';
         $route->controller = 'tasksController';
         $route->method = 'store';
@@ -124,7 +124,7 @@ class routes
         $route = new route();
         $route->http_method = 'POST';
         $route->action = 'delete';
-        $route->page = 'tasks';
+        $route->page = 'deleted';
         $route->controller = 'tasksController';
         $route->method = 'delete';
         $routes[] = $route;

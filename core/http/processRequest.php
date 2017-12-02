@@ -58,7 +58,7 @@ class processRequest
 
             if ($route->page == $page && $route->http_method == $request_method && $route->action == $action) {
                 $foundRoute = $route;
-                break;
+               // break;
             }
         }
         if (is_null($foundRoute)) {

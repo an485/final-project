@@ -51,14 +51,17 @@ class tasksController extends http\controller
 
        // $record = todos::findOne($_REQUEST['id']);
        // $record->body = $_REQUEST['body'];
-	//	 $upRecord = new todo();
-   // $upRecord->id = $_REQUEST['id'];
-	//$upRecord->owneremail = $_POST['owneremail'];
-	//$upRecord->duedate = $_POST['duedate'];
-	//$upRecord->message = $_POST['message'];
-   // $upRecord->save();
-
-        print_r($_POST);
+	$upRecord = new todo();
+    $upRecord->id = $_REQUEST['id'];
+	$upRecord->owneremail = $_POST['owneremail'];
+	$upRecord->duedate = $_POST['duedate'];
+	$upRecord->message = $_POST['message'];
+    //$upRecord->save();
+		echo $upRecord;
+	self::getTemplate('show_task', $record);
+		
+		
+        //echo $upRecord;
 		//header('index.php?page=tasks&action=show&id='. $_REQUEST['id']);
 
     }
@@ -69,8 +72,7 @@ class tasksController extends http\controller
     {
         $record = todos::findOne($_REQUEST['id']);
         $record->delete();
-        print_r($_POST);
-
+		self::getTemplate('deleted', $record);
     }
 
 }
