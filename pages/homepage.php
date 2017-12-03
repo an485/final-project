@@ -1,20 +1,4 @@
-<!doctype html>
-
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-
-    <title>Your To Do List Management</title>
-    <meta name="description" content="This site allows you to create and manage a to do list.">
-    <meta name="author" content="Anthony Nater & KWilliams">
-
-    <link rel="stylesheet" href="css/styles.css">
-
-
-</head>
-
-<body>
-
+<?php include('header.php')  ?>
 
 <h1>
     <?php
@@ -34,5 +18,8 @@
 
 
 <script src="js/scripts.js"></script>
+
+
+<?php // include('footer.php')  ?>
 </body>
 </html>

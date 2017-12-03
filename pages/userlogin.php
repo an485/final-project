@@ -1,11 +1,5 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Untitled Document</title>
-</head>
+<?php include('header.php') ?>
 
-<body>
 <form action="index.php?page=show_account&action=login" method="POST">
 
     <div class="container">
