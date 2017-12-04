@@ -48,23 +48,18 @@ class tasksController extends http\controller
     public static function store()
     {
 
-
-       // $record = todos::findOne($_REQUEST['id']);
-       // $record->body = $_REQUEST['body'];
-	$upRecord = new todo();
-    $upRecord->id = $_REQUEST['id'];
-	$upRecord->owneremail = $_POST['owneremail'];
-	$upRecord->duedate = $_POST['duedate'];
-	$upRecord->message = $_POST['message'];
-    $upRecord->save();
-	//self::getTemplate('show_task', $record);
-		
-		
+		$upRecord = new todo();
+    	$upRecord->id = $_REQUEST['id'];
+		$upRecord->owneremail = $_POST['owneremail'];
+		$upRecord->duedate = $_POST['duedate'];
+		$upRecord->message = $_POST['message'];
+		$upRecord->isdone = $_POST['isdone'];
+		$upRecord->save();
         //echo $upRecord;
-		header('index.php?page=tasks&action=show&id='. $_REQUEST['id']);
+		header("Location: index.php?page=all_tasks&action=show&msg=ToDo%20Updated&id=". $_REQUEST['id']);
 
     }
-
+	
     //this is the delete function.  You actually return the edit form and then there should be 2 forms on that.
     //One form is the todo and the other is just for the delete button
     public static function delete()

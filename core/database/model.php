@@ -51,7 +51,7 @@ abstract class model
     private function insert()
     {
 
-        $modelName = static::$modelName;
+      /*  $modelName = static::$modelName;
         $tableName = $modelName::getTablename();
         $array = get_object_vars($this);
         unset($array['id']);
@@ -59,6 +59,19 @@ abstract class model
         $valueString = ':' . implode(',:', array_flip($array));
         $sql = 'INSERT INTO ' . $tableName . ' (' . $columnString . ') VALUES (' . $valueString . ')';
         return $sql;
+		*/
+		
+		//mine from Active Record
+		$array = get_object_vars($this);
+		array_pop($array);
+        array_shift($array);
+		$columns = array_keys($array);
+        $columnString = implode(', ', $columns);
+        $valueString = implode(', ', $array);
+		$table = $this->tableName; 
+		$sql = 'INSERT INTO ' . $table .  ' (' . $columnString . ') VALUES  (' . $valueString . ')';
+		//echo "I just Instered a new row with the values " . $valueString . "<br>";
+		return $sql;
     }
 
     private function update()
@@ -104,8 +117,8 @@ abstract class model
     {
         $db = dbConn::getConnection();
         $modelName = static::$modelName;
-        $tableName = $modelName::getTablename();
-        $sql = 'DELETE FROM ' . $tableName . ' WHERE id=' . $this->id;
+        //$tableName = $modelName::getTablename();
+        $sql = 'DELETE FROM ' . $this->tableName . ' WHERE id=' . $this->id;
         $statement = $db->prepare($sql);
         $statement->execute();
     }

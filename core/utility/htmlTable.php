@@ -58,10 +58,56 @@ class htmlTable
         $tableGen .= '</tr></table><hr>';
         return $tableGen;
     }
-	 public static function columnNames($innerRow)
+	 
+	
+	/*
+	*
+	*
+	* Put single Task into a form so we can update the record
+	*
+	*/ 
+	
+	 public static function generateFormFromOneRecord($innerArray)
     {
 		
-            if($innerRow == 'owneremail')
+		$formGen = '<table border="1" cellpadding="10"><tr>';
+        $formGen .= '<tr>';
+        foreach ($innerArray as $innerRow => $value) {
+			 $innerRow = self::columnNames($innerRow);
+            if($innerRow != 'id' && $innerRow != 'ownerid' && $innerRow != 'tableName')
+				
+			$formGen .= '<th>' . $innerRow . '</th>';
+        }
+        $formGen .= '</tr>';
+
+        foreach ($innerArray as $innerRow => $value) {
+            if($innerRow != 'id' && $innerRow != 'createddate' && $innerRow != 'ownerid' && $innerRow != 'lastupdated' && $innerRow != 'tableName') {
+			$formGen .= "<td><input type='text' name=" . $innerRow . " id=" . $innerRow . " value='$value'></td>";	
+			}
+			else {
+				if($innerRow != 'id' && $innerRow != 'ownerid' && $innerRow != 'tableName')
+            $formGen .= "<td>" . $value . "</td>";
+				
+			}
+        }
+
+        $formGen .= '</tr></table>';
+        return $formGen;
+		
+	 /* $formGen = '<form action="index.php?page=show_account&action=login" method="POST"> <div class="container edittask">';
+
+
+        foreach ($innerArray as $value) {
+            $formGen .= '<input type="text" placeholder=' . $value . ' name="uname" required>';
+        }
+
+        $formGen .= '</div></form>';
+        return $formGen; */
+    }
+	public static function columnNames($innerRow)
+    {
+		
+        if($innerRow == 'owneremail')
 			{ $innerRow = 'Email Address'; }
 		if($innerRow == 'createddate')
 			{ $innerRow = 'Date Created'; }
@@ -80,52 +126,6 @@ class htmlTable
         return $innerRow;
 		//echo $innerRow;
 	}
-	
-	/*
-	*
-	*
-	* Put single Task into a form so we can update the record
-	*
-	*/ 
-	
-	 public static function generateFormFromOneRecord($innerArray)
-    {
-		
-		$formGen = '<table border="1" cellpadding="10"><tr>';
-
-        $formGen .= '<tr>';
-        foreach ($innerArray as $innerRow => $value) {
-			 $innerRow = self::columnNames($innerRow);
-            if($innerRow != 'id' && $innerRow != 'ownerid')
-				
-			$formGen .= '<th>' . $innerRow . '</th>';
-        }
-        $formGen .= '</tr>';
-
-        foreach ($innerArray as $innerRow => $value) {
-            if($innerRow != 'id' && $innerRow != 'createddate' && $innerRow != 'ownerid') {
-			$formGen .= '<td><input type="text" name=' . $innerRow . ' id=' . $innerRow . ' value=' . $value . '></td>';	
-			}
-			else {
-				if($innerRow != 'id' && $innerRow != 'ownerid')
-            $formGen .= '<td>' . $value . '</td>';
-				
-			}
-        }
-
-        $formGen .= '</tr></table>';
-        return $formGen;
-		
-	 /* $formGen = '<form action="index.php?page=show_account&action=login" method="POST"> <div class="container edittask">';
-
-
-        foreach ($innerArray as $value) {
-            $formGen .= '<input type="text" placeholder=' . $value . ' name="uname" required>';
-        }
-
-        $formGen .= '</div></form>';
-        return $formGen; */
-    }
 	
 }
 

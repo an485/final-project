@@ -49,7 +49,7 @@ class routes
         $route = new route();
         $route->http_method = 'GET';
         $route->action = 'all';
-        $route->page = 'tasks';
+        $route->page = 'all_tasks';
         $route->controller = 'tasksController';
         $route->method = 'all';
         $routes[] = $route;
@@ -97,7 +97,7 @@ class routes
         $route = new route();
         $route->http_method = 'GET';
         $route->action = 'show';
-        $route->page = 'tasks';
+        $route->page = 'all_tasks';
         $route->controller = 'tasksController';
         $route->method = 'show';
         $routes[] = $route;
@@ -114,8 +114,8 @@ class routes
 		// Update
 		$route = new route();
         $route->http_method = 'POST';
-        $route->action = 'store';
-        $route->page = 'tasks';
+        $route->action = 'save_task';
+        $route->page = 'all_tasks';
         $route->controller = 'tasksController';
         $route->method = 'store';
         $routes[] = $route;
@@ -129,6 +129,16 @@ class routes
         $route->method = 'delete';
         $routes[] = $route;
 
+		//Insert
+        $route = new route();
+        $route->http_method = 'POST';
+        $route->action = 'insert';
+        $route->page = 'new_task';
+        $route->controller = 'tasksController';
+        $route->method = 'insert';
+        $routes[] = $route;
+
+		
         return $routes;
     }
 }

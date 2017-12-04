@@ -41,10 +41,14 @@ li {
 	font-size:0.75em;
 	}
 
-
+.message {
+    color: #00BF37;
+	font-weight: bold;
+}
 /* Table Styles */
 
-td, th { padding:6px;!important }
+td, th {	padding: 6px; }
+
 tr {
     font-size: 12px;
 	border:none;

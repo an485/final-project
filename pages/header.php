@@ -14,7 +14,7 @@
         <nav class="col-sm-6">
         <ul>
          <li><a href="index.php">Home</a></li>
-         <li><a href="index.php?page=tasks&action=all">My ToDo's</a></li>
+         <li><a href="index.php?page=all_tasks&action=all">My ToDo's</a></li>
          <li><a href=<?php // if session active then logout ?>"index.php?page=userlogin&action=login">Login</a></li>
 		</ul>
         </nav>

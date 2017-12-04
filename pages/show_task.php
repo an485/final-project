@@ -3,7 +3,12 @@
  <section class="container" id="alltasks">
   	<div class="row">
   		<div class="col-sm-12">
-  			<h1>My Tasks</h1>
+		<h5><a href="index.php?page=all_tasks&action=all"><< View All</a></h5>
+ 			<p style="color:green;font-weight:bold;" class="message"><?php 
+				if (!empty($_REQUEST['msg'])) 
+			    echo $_REQUEST['msg'];  
+	         ?></p>
+  			
   			<p> <?php print utility\htmlTable::generateTableFromOneRecord($data); ?></p>
   		</div>	
   	</div>
