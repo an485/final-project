@@ -15,7 +15,7 @@ class accountsController extends http\controller
     //to call the show function the url is index.php?page=task&action=show
     public static function show()
     {
-        $record = accounts::findOne($_REQUEST['id']);
+        $record = useraccounts::findOne($_REQUEST['id']);
         self::getTemplate('show_account', $record);
     }
 
@@ -24,7 +24,7 @@ class accountsController extends http\controller
     public static function all()
     {
 
-        $records = accounts::findAll();
+        $records = useraccounts::findAll();
         self::getTemplate('all_accounts', $records);
 
     }
@@ -40,13 +40,10 @@ class accountsController extends http\controller
         //USE THE ABOVE TO SEE HOW TO USE Bcrypt
         print_r($_POST);
         //this just shows creating an account.
-        $record = new account();
+        $record = new useraccount();
         $record->email = "kwilliam@njit.edu";
         $record->fname = "test2";
         $record->lname = "cccc2";
-        $record->phone = "4444444";
-        $record->birthday = "0";
-        $record->gender = "male";
         $record->password = "12345";
         $record->save();
     }
@@ -60,7 +57,7 @@ class accountsController extends http\controller
 
     public static function edit()
     {
-        $record = accounts::findOne($_REQUEST['id']);
+        $record = useraccounts::findOne($_REQUEST['id']);
 
         self::getTemplate('edit_account', $record);
 

@@ -14,7 +14,7 @@ abstract class collection
 
     static public function findAll()
     {
-        $tableName = get_called_class();
+       $tableName = get_called_class();
         $sql = 'SELECT * FROM ' . $tableName;
         return self::getResults($sql);
     }

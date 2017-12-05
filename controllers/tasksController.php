@@ -14,7 +14,7 @@ class tasksController extends http\controller
     //to call the show function the url is index.php?page=task&action=show
     public static function show()
     {
-        $record = todos::findOne($_REQUEST['id']);
+        $record = usertodos::findOne($_REQUEST['id']);
         self::getTemplate('show_task', $record);
     }
 
@@ -22,7 +22,7 @@ class tasksController extends http\controller
 
     public static function all()
     {
-        $records = todos::findAll();
+        $records = usertodos::findAll();
         self::getTemplate('all_tasks', $records);
 
     }
@@ -39,8 +39,14 @@ class tasksController extends http\controller
     //this is the function to view edit record form
     public static function edit()
     {
-        $record = todos::findOne($_REQUEST['id']);
+        $record = usertodos::findOne($_REQUEST['id']);
         self::getTemplate('edit_task', $record);
+
+    }
+	 public static function add_task()
+    {
+        //$record = usertodos::findOne($_REQUEST['userid']);
+        self::getTemplate('create');
 
     }
 
@@ -48,15 +54,25 @@ class tasksController extends http\controller
     public static function store()
     {
 
-		$upRecord = new todo();
+		$upRecord = new usertodo();
     	$upRecord->id = $_REQUEST['id'];
-		$upRecord->owneremail = $_POST['owneremail'];
-		$upRecord->duedate = $_POST['duedate'];
-		$upRecord->message = $_POST['message'];
-		$upRecord->isdone = $_POST['isdone'];
+		$upRecord->updated = $_POST['updated'];
+		$upRecord->task = $_POST['task'];
+		$upRecord->complete = $_POST['complete'];
 		$upRecord->save();
         //echo $upRecord;
 		header("Location: index.php?page=all_tasks&action=show&msg=ToDo%20Updated&id=". $_REQUEST['id']);
+
+    }
+	 public static function insert()
+    {
+
+		$upRecord = new usertodo();
+    	$upRecord->userid = $_REQUEST['userid'];
+		$upRecord->task = $_POST['task'];
+		$upRecord->save();
+        //echo $upRecord;
+		header("Location: /index.php?page=all_tasks&action=all&msg=You%20Added%20a%20Task");
 
     }
 	
@@ -64,7 +80,7 @@ class tasksController extends http\controller
     //One form is the todo and the other is just for the delete button
     public static function delete()
     {
-        $record = todos::findOne($_REQUEST['id']);
+        $record = usertodos::findOne($_REQUEST['id']);
         $record->delete();
 		self::getTemplate('deleted', $record);
     }

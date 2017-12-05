@@ -129,11 +129,20 @@ class routes
         $route->method = 'delete';
         $routes[] = $route;
 
-		//Insert
+		//create a task page
+        $route = new route();
+        $route->http_method = 'GET';
+        $route->action = 'add_task';
+        $route->page = 'create';
+        $route->controller = 'tasksController';
+        $route->method = 'add_task';
+        $routes[] = $route;
+		
+		//insert a task 
         $route = new route();
         $route->http_method = 'POST';
-        $route->action = 'insert';
-        $route->page = 'new_task';
+        $route->action = 'add_task';
+        $route->page = 'all_tasks';
         $route->controller = 'tasksController';
         $route->method = 'insert';
         $routes[] = $route;

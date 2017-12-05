@@ -23,7 +23,8 @@ class htmlTable
         foreach ($array as $record) {
             $tableGen .= '<tr>';
             foreach ($record as $key => $value) {
-                if ($key == 'id') {
+				
+                if ($key == 'id' && $key != 'userid') {
                     $tableGen .= '<td><a href="index.php?page=' . $referingPage . '&action=show&id=' . $value . '">View</a></td>';
                 } else {
                     $tableGen .= '<td>' . $value . '</td>';
@@ -45,13 +46,13 @@ class htmlTable
         $tableGen .= '<tr>';
         foreach ($innerArray as $innerRow => $value) {
 			$innerRow = self::columnNames($innerRow);
-			if($innerRow != 'id')
+			if($innerRow != 'id' && $innerRow != 'userid' &&$innerRow != 'tableName')
             $tableGen .= '<th>' . $innerRow . '</th>';
         }
         $tableGen .= '</tr>';
 
         foreach ($innerArray as $innerRow => $value) {
-			if($innerRow != 'id')
+			if($innerRow != 'id' && $innerRow != 'userid' &&$innerRow != 'tableName')
             $tableGen .= '<td>' . $value . '</td>';
         }
 
@@ -74,18 +75,18 @@ class htmlTable
         $formGen .= '<tr>';
         foreach ($innerArray as $innerRow => $value) {
 			 $innerRow = self::columnNames($innerRow);
-            if($innerRow != 'id' && $innerRow != 'ownerid' && $innerRow != 'tableName')
+            if($innerRow != 'id' && $innerRow != 'userid' && $innerRow != 'tableName')
 				
 			$formGen .= '<th>' . $innerRow . '</th>';
         }
         $formGen .= '</tr>';
 
         foreach ($innerArray as $innerRow => $value) {
-            if($innerRow != 'id' && $innerRow != 'createddate' && $innerRow != 'ownerid' && $innerRow != 'lastupdated' && $innerRow != 'tableName') {
+            if($innerRow != 'id' && $innerRow != 'created' && $innerRow != 'userid' && $innerRow != 'updated' && $innerRow != 'tableName') {
 			$formGen .= "<td><input type='text' name=" . $innerRow . " id=" . $innerRow . " value='$value'></td>";	
 			}
 			else {
-				if($innerRow != 'id' && $innerRow != 'ownerid' && $innerRow != 'tableName')
+				if($innerRow != 'id' && $innerRow != 'userid' && $innerRow != 'tableName')
             $formGen .= "<td>" . $value . "</td>";
 				
 			}
@@ -107,18 +108,16 @@ class htmlTable
 	public static function columnNames($innerRow)
     {
 		
-        if($innerRow == 'owneremail')
-			{ $innerRow = 'Email Address'; }
-		if($innerRow == 'createddate')
+		if($innerRow == 'created')
 			{ $innerRow = 'Date Created'; }
-		if($innerRow == 'lastupdated')
+		if($innerRow == 'updated')
 			{ $innerRow = 'Last Updated'; }
-		if($innerRow == 'duedate')
-			{ $innerRow = 'Due Date'; }
-		if($innerRow == 'message')
+		//if($innerRow == 'duedate')
+		//	{ $innerRow = 'Due Date'; }
+		if($innerRow == 'task')
 			{ $innerRow = 'ToDo Task'; }
-		if($innerRow == 'isdone')
-			{ $innerRow = 'Is Done'; }
+		if($innerRow == 'complete')
+			{ $innerRow = 'Completed'; }
 		
 		else {
 				$innerRow = $innerRow;
