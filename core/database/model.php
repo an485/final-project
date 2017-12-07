@@ -44,8 +44,8 @@ abstract class model
             $sql = $this->update();
         }
         $statement = $db->prepare($sql);
-        echo $statement;
-		//$statement->execute();
+        //echo $statement;
+		$statement->execute();
 
     }
 
@@ -54,7 +54,7 @@ abstract class model
 
        $modelName = static::$modelName;
        // $tableName = $modelName::getTablename();
-		 $tableName = $this->tableName;
+		$tableName = $this->tableName;
         $array = get_object_vars($this);
         unset($array['id']);
         $columnString = implode(',', array_flip($array));

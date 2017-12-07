@@ -56,7 +56,7 @@ class tasksController extends http\controller
 
 		$upRecord = new usertodo();
     	$upRecord->id = $_REQUEST['id'];
-		$upRecord->updated = $_POST['updated'];
+		$upRecord->updated = date('Y-m-d H:m:s');
 		$upRecord->task = $_POST['task'];
 		$upRecord->complete = $_POST['complete'];
 		$upRecord->save();
@@ -72,7 +72,7 @@ class tasksController extends http\controller
 		$upRecord->task = $_POST['task'];
 		$upRecord->save();
         //echo $upRecord;
-		header("Location: /index.php?page=all_tasks&action=all&msg=You%20Added%20a%20Task");
+		header("Location: index.php?page=all_tasks&action=all&msg=You%20Added%20a%20Task");
 
     }
 	
@@ -82,7 +82,8 @@ class tasksController extends http\controller
     {
         $record = usertodos::findOne($_REQUEST['id']);
         $record->delete();
-		self::getTemplate('deleted', $record);
+		header("Location: index.php?page=all_tasks&action=all&msg=Your%20task%20was%20deleted");
+		//self::getTemplate('deleted', $record);
     }
 
 }

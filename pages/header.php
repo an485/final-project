@@ -10,7 +10,7 @@
 <body>
    <header class="container">
      <div class="row">
-        <h1 class="col-sm-6">Manage My ToDo's</h1>
+        <div class="col-sm-6"><img src="images/TM-Logo.png" alt=""/></div>
         <nav class="col-sm-6">
         <ul>
          <li><a href="index.php">Home</a></li>
@@ -22,7 +22,7 @@
   </header>
   <section class="jumbotron">
       <div class="row text-center">
-      	<p class="title">Web Systems Development</p>
-      	<p class="subtitle">Final Project</p>
+      	<p class="title">ToDo Task Manager</p>
+      	<p class="subtitle">IS 601 - Final Project</p>
       </div>
   </section>
