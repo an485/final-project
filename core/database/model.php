@@ -6,7 +6,7 @@ abstract class model
 
     public function save()
     {
-       /* if ($this->id != '') {
+      /*  if ($this->id != '') {
             $sql = $this->update();
         } else {
             $sql = $this->insert();
@@ -33,26 +33,29 @@ abstract class model
         }
 
 
-        return $this->id; */
-		
+        return $this->id; 
+		*/
 		
 		// TEST mine form Active record
 		 $db = dbConn::getConnection();
 		if (!isset($this->id)) {
-            $sql = $this->insert();
+           // echo "Insert";
+			$sql = $this->insert();
         } else {
             $sql = $this->update();
         }
         $statement = $db->prepare($sql);
-        //echo $statement;
-		$statement->execute();
+        $statement->execute();
+        //print_r($statement);
+		
+		
 
     }
 
     private function insert()
     {
 
-       $modelName = static::$modelName;
+      /* $modelName = static::$modelName;
        // $tableName = $modelName::getTablename();
 		$tableName = $this->tableName;
         $array = get_object_vars($this);
@@ -60,20 +63,29 @@ abstract class model
         $columnString = implode(',', array_flip($array));
         $valueString = ':' . implode(',:', array_flip($array));
         $sql = 'INSERT INTO ' . $tableName . ' (' . $columnString . ') VALUES (' . $valueString . ')';
-        return $sql;
+        echo $sql;
+		//return $sql;
 		
-		
+		*/
 		//mine from Active Record
-	/*	$array = get_object_vars($this);
+		$array = get_object_vars($this);
 		array_pop($array);
-        array_shift($array);
+		unset($array['id']);
+        //array_shift($array);
 		$columns = array_keys($array);
         $columnString = implode(', ', $columns);
-        $valueString = implode(', ', $array);
+        $valueString = implode("', '", $array);
 		$table = $this->tableName; 
-		$sql = 'INSERT INTO ' . $table .  ' (' . $columnString . ') VALUES  (' . $valueString . ')';
+		$sql = "INSERT INTO " . $table .  " (" . $columnString . ") VALUES  ('" . $valueString . "')";
 		//echo "I just Instered a new row with the values " . $valueString . "<br>";
-		return $sql; */
+		
+		//print_r($columns);
+	//	echo '<br>';
+		//print_r($columnString);
+		//echo '<br>';
+		//print_r($valueString);
+		return $sql;
+		//echo $sql;
     }
 
     private function update()

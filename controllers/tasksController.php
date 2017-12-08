@@ -68,10 +68,14 @@ class tasksController extends http\controller
     {
 
 		$upRecord = new usertodo();
-    	$upRecord->userid = $_REQUEST['userid'];
+    	$upRecord->userid = $_POST['userid'];
+		$upRecord->created = date('Y-m-d H:m:s');
+		$upRecord->updated = NULL;
 		$upRecord->task = $_POST['task'];
+		$upRecord->complete = "0";
 		$upRecord->save();
-        //echo $upRecord;
+		//$post_array = implode(" ", $upRecord);
+        //echo $post_array;
 		header("Location: index.php?page=all_tasks&action=all&msg=You%20Added%20a%20Task");
 
     }
