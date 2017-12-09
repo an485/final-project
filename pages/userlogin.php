@@ -1,4 +1,6 @@
 <?php include('header.php') ?>
+<h2><?php include('message.php'); ?><br><br></h2>
+<h2>User Login</h2>
 
 <form action="index.php?page=show_account&action=login" method="POST">
 

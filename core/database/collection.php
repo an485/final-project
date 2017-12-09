@@ -34,10 +34,10 @@ abstract class collection
     {
         $tableName = get_called_class();
         $sql = 'SELECT * FROM ' . $tableName . ' WHERE id =' . $id;
-        //grab the only record for find one and return as an object
         $recordsSet = self::getResults($sql);
         return $recordsSet[0];
     }
+	 
 }
 
 ?>

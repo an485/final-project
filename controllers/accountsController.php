@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: kwilliams
- * Date: 11/27/17
- * Time: 5:32 PM
- */
 
 
 //each page extends controller and the index.php?page=tasks causes the controller to be called
@@ -34,22 +28,47 @@ class accountsController extends http\controller
     //you should check the notes on the project posted in moodle for how to use active record here
 
     //this is to register an account i.e. insert a new account
-    public static function register()
+	
+	public static function register()
     {
-        //https://www.sitepoint.com/why-you-should-use-bcrypt-to-hash-stored-passwords/
-        //USE THE ABOVE TO SEE HOW TO USE Bcrypt
-        print_r($_POST);
-        //this just shows creating an account.
-        $record = new useraccount();
-        $record->email = "kwilliam@njit.edu";
-        $record->fname = "test2";
-        $record->lname = "cccc2";
-        $record->password = "12345";
-        $record->save();
+        // Show registration form
+        self::getTemplate('register');
     }
 
+   public static function store()
+    {
+        $user = useraccount::findUser($_REQUEST['email']);
+		//$count  = mysqli_num_rows($user);
+			if ($user == FALSE) {  //  does not exist
+	            $uname = useraccount::findUname($_REQUEST['username']); 
+				if ($uname == FALSE) {				
+				//echo 'does Not Exist';
+            $user = new useraccount();
+            $user->email = $_POST['email'];
+		    $user->username = $_POST['username'];
+            $user->fname = $_POST['fname'];
+            $user->lname = $_POST['lname'];
+            $user->password = utility\registration::setPassword($_POST['password']);
+			$user->save();
+
+            header("Location: index.php?page=userlogin&action=login&msg=Account%20Activated%20%2D%20Login%20to%20Get%20Started");
+				}
+				else {  
+					$baduName = $_POST['username'];
+					header("Location: index.php?page=account&action=register&msg=The%20User%20Name%20" . $baduName . " is%20already%20registered"); 
+					 }
+       } else {
+			//echo 'Its True does exist'; 
+				$badEmail = $_POST['email'];
+         header("Location: index.php?page=account&action=register&msg=Your%20email%20" . $_POST['email'] . "%20is%20already%20registered");
+
+	 
+       } 
+    }
+
+
     //this is the function to save the user the user profile
-    public static function store()
+    public static function test()
     {
         print_r($_POST);
 

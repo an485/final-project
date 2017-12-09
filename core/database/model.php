@@ -136,6 +136,52 @@ abstract class model
         $statement = $db->prepare($sql);
         $statement->execute();
     }
+	public static function findUser($email) {
+	    $db = dbConn::getConnection();
+        $modelName = static::$modelName;
+        $sql = "SELECT email FROM useraccounts WHERE email= '$email'";
+        $statement = $db->prepare($sql);
+        $statement->execute();
+		$statement->setFetchMode(\PDO::FETCH_CLASS, $modelName);
+        $recordsSet = $statement->fetchAll();
+        return $recordsSet;
+		$count  = mysqli_num_rows($recordsSet);
+	if($count==0) {
+		return FALSE;//$message = "Invalid Username or Password!";
+	} else {
+	return TRUE;
+	}
+		
+	// echo $sql;
+		
+	}
+	public static function findUname($uName) {
+	    $db = dbConn::getConnection();
+        $modelName = static::$modelName;
+        $sql = "SELECT username FROM useraccounts WHERE username= '$uName'";
+        $statement = $db->prepare($sql);
+        $statement->execute();
+		$statement->setFetchMode(\PDO::FETCH_CLASS, $modelName);
+        $recordsSet = $statement->fetchAll();
+        return $recordsSet;
+		$count  = mysqli_num_rows($recordsSet);
+	if($count==0) {
+		return FALSE;//$message = "Invalid Username or Password!";
+	} else {
+	return TRUE;
+	}
+		
+	// echo $sql;
+		
+	}
+	static public function findEmail($email)
+    {
+        $tableName = get_called_class();
+        $sql = 'SELECT * FROM ' . $tableName . ' WHERE email =' . $email;
+        $recordsSet = self::getResults($sql);
+        return $recordsSet[0];
+		
+    }
 }
 
 ?>
