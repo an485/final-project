@@ -1,7 +1,6 @@
 body
 {
-/*font-family: arial, Times;*/
-font-family: century gothic;
+font-family: arial, Times;
 font-size:14px;
 }
 header {
@@ -82,4 +81,8 @@ button.delete:hover {
 footer {
 	margin-top:75px;
 	
+}
+
+div#field {
+    margin-bottom: 10px;
 }
