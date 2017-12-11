@@ -33,22 +33,24 @@ final class useraccount extends \database\model
         return $records;
     }
 	
-public static function findUserbyEmail($email) {
+/*public static function findUserbyEmail($email) {
 	
 	$userExists = static::findUser($email);
 	echo $userExists;
 		
 	}
+	*/
+	
     //add a method to compare the passwords this is where bcrypt should be done and it should return TRUE / FALSE for login
     //add a method to compare the passwords this is where bcrypt should be done and it should return TRUE / FALSE for login
-    public function setPassword($password) {
-        $password = password_hash($password, PASSWORD_DEFAULT);
-        return $password;
-    }
+    //public function setPassword($password) {
+      //  $password = password_hash($password, PASSWORD_DEFAULT);
+       // return $password;
+   // }
     public function checkPassword($LoginPassword) {
         return password_verify($LoginPassword, $this->password);
     }
-    public function validate()
+  /* . Do I need this???  public function validate()
     {
         $valid = TRUE;
         echo 'myemail: ' . $this->email;
@@ -58,6 +60,7 @@ public static function findUserbyEmail($email) {
         }
         return $valid;
     }
+	*/
 
 
 

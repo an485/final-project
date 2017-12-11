@@ -72,25 +72,7 @@ class routes
         $route->method = 'show';
         $routes[] = $route;
 
-        //This goes in the login form action method
-        //GET METHOD index.php?page=accounts&action=login
-
-        $route = new route();
-        $route->http_method = 'POST';
-        $route->action = 'login';
-        $route->page = 'show_account';
-        $route->controller = 'accountsController';
-        $route->method = 'login';
-        $routes[] = $route;
-		
-		//show login page for a user
-		$route = new route();
-        $route->http_method = 'GET';
-        $route->action = 'login';
-        $route->page = 'userlogin';
-        $route->controller = 'homepageController';
-        $route->method = 'login';
-        $routes[] = $route;
+       
 
         //Show a Task
         //GET METHOD index.php?page=tasks&action=show
@@ -172,6 +154,26 @@ class routes
         $route->page = 'account';
         $route->controller = 'accountsController';
         $route->method = 'store';
+        $routes[] = $route;
+		
+		 //This goes in the login form action method
+        //GET METHOD index.php?page=accounts&action=login
+
+        $route = new route();
+        $route->http_method = 'POST';
+        $route->action = 'login';
+        $route->page = 'accounts';
+        $route->controller = 'accountsController';
+        $route->method = 'login';
+        $routes[] = $route;
+		
+		//show login page for a user
+		$route = new route();
+        $route->http_method = 'GET';
+        $route->action = 'login';
+        $route->page = 'userlogin';
+        $route->controller = 'homepageController';
+        $route->method = 'login';
         $routes[] = $route;
 		
         return $routes;

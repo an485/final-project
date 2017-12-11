@@ -37,10 +37,10 @@ class accountsController extends http\controller
 
    public static function store()
     {
-        $user = useraccount::findUser($_REQUEST['email']);
+        $user = useraccounts::findUser($_REQUEST['email']);
 		//$count  = mysqli_num_rows($user);
 			if ($user == FALSE) {  //  does not exist
-	            $uname = useraccount::findUname($_REQUEST['username']); 
+	            $uname = useraccounts::findUname($_REQUEST['username']); 
 				if ($uname == FALSE) {				
 				//echo 'does Not Exist';
             $user = new useraccount();
@@ -48,7 +48,7 @@ class accountsController extends http\controller
 		    $user->username = $_POST['username'];
             $user->fname = $_POST['fname'];
             $user->lname = $_POST['lname'];
-            $user->password = utility\registration::setPassword($_POST['password']);
+            $user->password = utility\registration::setPassword($_POST['password']);		
 			$user->save();
 
             header("Location: index.php?page=userlogin&action=login&msg=Account%20Activated%20%2D%20Login%20to%20Get%20Started");
@@ -90,10 +90,31 @@ class accountsController extends http\controller
         //then you need to check the password and create the session if the password matches.
         //you might want to add something that handles if the password is invalid, you could add a page template and direct to that
         //after you login you can use the header function to forward the user to a page that displays their tasks.
-        //        $record = accounts::findUser($_POST['uname']);
-
-        print_r($_POST);
-
-    }
+        //        $record = accounts::findUser($_POST['email']);
+        $user = useraccounts::findUname($_REQUEST['username']);
+		//echo $user['password'];
+		//$ckPW = useraccounts::checkPassword($_POST['password']);
+        if ($user == FALSE) {
+            echo 'user not found';
+        } else {
+            //if($user->checkPassword($_POST['password']) == TRUE) {
+			$pw = utility\registration::checkPassword($_POST['password'], $user['password']);
+			echo $pw;
+			if($pw == TRUE) {
+                echo 'login';
+                session_start();
+                //$_SESSION["userID"] = $user->id;
+				$_SESSION["userID"] = $user['id'];
+				$_SESSION["FName"] = $user['fname'];
+				header("Location: 'index.php?page=all_tasks&action=show&id=8&userid=" . $_SESSION["userID"]);
+                //forward the user to the show all todos page
+                print_r($_SESSION);
+			
+            } else {
+                echo  'password does not match';
+				//print_r($ckPW);
+            }
+        }
+	}
 	
 }
