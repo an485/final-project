@@ -12,10 +12,10 @@ abstract class collection
         return $model;
     }
 
-    static public function findAll()
+    static public function findAll($userid)
     {
        $tableName = get_called_class();
-        $sql = 'SELECT * FROM ' . $tableName;
+        $sql = 'SELECT * FROM ' . $tableName . 'WHERE userid =' . $userid;
         return self::getResults($sql);
     }
 
@@ -51,14 +51,10 @@ abstract class collection
     {
         $tableName = get_called_class();
         $sql = 'SELECT * FROM ' . $tableName . ' WHERE id =' . $id;
-        $recordsSet = self::getResults($sql);
+        $recordsSet = self::getResults2($sql);
         return $recordsSet[0];
     }
-	static public function findTasks($userid) {
-		
-		
-	}
-	 
+
 }
 
 ?>

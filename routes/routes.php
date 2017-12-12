@@ -62,17 +62,7 @@ class routes
         $route->controller = 'accountsController';
         $route->method = 'all';
         $routes[] = $route;
-        //GET METHOD index.php?page=accounts&action=show
-
-        $route = new route();
-        $route->http_method = 'GET';
-        $route->action = 'show';
-        $route->page = 'accounts';
-        $route->controller = 'accountsController';
-        $route->method = 'show';
-        $routes[] = $route;
-
-       
+        
 
         //Show a Task
         //GET METHOD index.php?page=tasks&action=show
@@ -84,7 +74,7 @@ class routes
         $route->method = 'show';
         $routes[] = $route;
 
-		// Edit
+		// Edit task
 		$route = new route();
         $route->http_method = 'GET';
         $route->action = 'edit';
@@ -92,14 +82,32 @@ class routes
         $route->controller = 'tasksController';
         $route->method = 'edit';
         $routes[] = $route;
+		
+		//Edit account
+		$route = new route();
+        $route->http_method = 'GET';
+        $route->action = 'update';
+        $route->page = 'edit_account';
+        $route->controller = 'accountsController';
+        $route->method = 'update';
+        $routes[] = $route;
        
-		// Update
+		// Update task
 		$route = new route();
         $route->http_method = 'POST';
         $route->action = 'save_task';
         $route->page = 'all_tasks';
         $route->controller = 'tasksController';
         $route->method = 'store';
+        $routes[] = $route;
+		
+		// Update account
+		$route = new route();
+        $route->http_method = 'POST';
+        $route->action = 'update';
+        $route->page = 'show_account';
+        $route->controller = 'tasksController';
+        $route->method = 'update';
         $routes[] = $route;
 		
 		//Delete
@@ -130,13 +138,13 @@ class routes
         $routes[] = $route;
          
 		
-		//Accounts
+		/*//Accounts
 		$route = new route();
         $route->http_method = 'POST';
         $route->action = 'save';
         $route->page = 'account';
         $route->controller = 'accountsController';
-        $route->method = 'save';
+        $route->method = 'save'; */
 		//$route->method = 'test';
         $routes[] = $route;
         //this is the route for the reg form
@@ -158,7 +166,6 @@ class routes
 		
 		 //This goes in the login form action method
         //GET METHOD index.php?page=accounts&action=login
-
         $route = new route();
         $route->http_method = 'POST';
         $route->action = 'login';
@@ -176,6 +183,34 @@ class routes
         $route->method = 'login';
         $routes[] = $route;
 		
+		 //GET METHOD index.php?page=all_tasks&action=all
+		// Show all the users Tasks after login
+        $route = new route();
+        $route->http_method = 'GET';
+        $route->action = 'all';
+        $route->page = 'all_tasks';
+        $route->controller = 'tasksController';
+        $route->method = 'all';
+        $routes[] = $route;
+		
+		// logout
+        $route = new route();
+        $route->http_method = 'GET';
+        $route->action = 'logout';
+        $route->page = 'homepage';
+        $route->controller = 'accountsController';
+        $route->method = 'logout';
+        $routes[] = $route;
+		
+		// show profile
+        $route = new route();
+        $route->http_method = 'GET';
+        $route->action = 'show';
+        $route->page = 'show_account';
+        $route->controller = 'accountsController';
+        $route->method = 'show';
+        $routes[] = $route;
+
         return $routes;
     }
 }

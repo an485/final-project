@@ -8,7 +8,7 @@
   			
   			<form action="index.php?page=all_tasks&action=add_task" method="post" id="addTaskForm">
     		<input type="text" name="task" id="task"><br>
-    		<input type="hidden" name="userid" value="1">
+    		<input type="hidden" name="userid" value="<?php echo $_SESSION["userID"]; ?>">
 			<button type="submit" form="addTaskForm" value="store" class="edit">Save</button></form>
   		</div>	
   	</div>

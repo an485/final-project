@@ -1,3 +1,13 @@
+<?php 
+
+if (session_status() == PHP_SESSION_NONE) {
+	 session_start();
+	//$_SESSION = array();
+	//print_r($_SESSION);
+	//echo "session started because there was none";
+}
+
+?>
 <!doctype html>
 <html>
 <head>
@@ -14,8 +24,17 @@
         <nav class="col-sm-6">
         <ul>
          <li><a href="index.php">Home</a></li>
-         <li><a href="index.php?page=all_tasks&action=all">My ToDo's</a></li>
-         <li><a href=<?php // if session active then logout ?>"index.php?page=userlogin&action=login">Login</a></li>
+         <?php 
+			if (isset($_SESSION["userID"])) {
+				echo '<li><a href="index.php?page=all_tasks&action=all">My Tasks</a></li>';
+				echo '<li><a href="index.php?page=show_account&action=show">My Profile</a></li>';
+				echo '<li><a href="index.php?page=homepage&action=logout">Logout</a></li>';
+			}
+				else {
+					echo '<li><a href="index.php?page=userlogin&action=login">Login</a></li>';
+				
+			}
+				// if session active then logout ?>
 		</ul>
         </nav>
      </div>

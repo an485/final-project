@@ -6,7 +6,10 @@ class useraccounts extends \database\collection
 
     //This is the function to write to find user by ID for login.
     //Don't forget to return the object see findOne in the collection class
-    public static  function findUserbyID($userid) {}
+    public static  function findUserbyID($userid) {
+		
+		
+	}
 	
 	public static function findUser($email) {
 	   // $db = dbConn::getConnection();

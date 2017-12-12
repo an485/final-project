@@ -1,15 +1,14 @@
 <?php
 
-
-//each page extends controller and the index.php?page=tasks causes the controller to be called
 class accountsController extends http\controller
 {
 
-    //each method in the controller is named an action.
     //to call the show function the url is index.php?page=task&action=show
     public static function show()
-    {
-        $record = useraccounts::findOne($_REQUEST['id']);
+    {		
+		session_start();
+		$userID = $_SESSION["userID"];
+		$record = useraccounts::findOne($userID);
         self::getTemplate('show_account', $record);
     }
 
@@ -33,6 +32,21 @@ class accountsController extends http\controller
     {
         // Show registration form
         self::getTemplate('register');
+    }
+	
+	//Save updated profile Info
+	public static function update()
+    {
+
+		$upRecord = new useraccount();
+    	$upRecord->id = $_REQUEST['id'];
+		$upRecord->updated = date('Y-m-d H:m:s');
+		$upRecord->task = $_POST['task'];
+		$upRecord->complete = $_POST['complete'];
+		$upRecord->save();
+        //echo $upRecord;
+		header("Location: index.php?page=all_tasks&action=show&msg=ToDo%20Updated&id=". $_REQUEST['id']);
+
     }
 
    public static function store()
@@ -76,8 +90,10 @@ class accountsController extends http\controller
 
     public static function edit()
     {
-        $record = useraccounts::findOne($_REQUEST['id']);
-
+        
+		session_start();
+		$userID = $_SESSION["userID"];
+		$record = useraccounts::findOne($userID);
         self::getTemplate('edit_account', $record);
 
     }
@@ -106,15 +122,25 @@ class accountsController extends http\controller
                 //$_SESSION["userID"] = $user->id;
 				$_SESSION["userID"] = $user['id'];
 				$_SESSION["FName"] = $user['fname'];
-				header("Location: 'index.php?page=all_tasks&action=show&id=8&userid=" . $_SESSION["userID"]);
+				header("Location: index.php?page=all_tasks&action=all");
                 //forward the user to the show all todos page
-                print_r($_SESSION);
+                //print_r($_SESSION);
 			
             } else {
                 echo  'password does not match';
 				//print_r($ckPW);
             }
         }
+	}
+	
+	//Log out and kill session
+	public static function logout()  {
+		  
+		 //$_SESSION = array();
+		session_start();
+	    $_SESSION = array();
+		session_destroy();
+        self::getTemplate('homepage');		
 	}
 	
 }

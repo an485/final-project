@@ -22,7 +22,11 @@ class tasksController extends http\controller
 
     public static function all()
     {
-        $records = usertodos::findAll();
+        //$records = usertodos::findAll();
+		session_start();
+		$userID = $_SESSION["userID"];
+		//$records = usertodos::findAll();
+		$records = usertodos::findTasksbyID($userID);
         self::getTemplate('all_tasks', $records);
 
     }
