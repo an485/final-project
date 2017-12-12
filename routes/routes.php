@@ -55,15 +55,6 @@ class routes
         $routes[] = $route;
         //GET METHOD index.php?page=accounts&action=all
 
-        $route = new route();
-        $route->http_method = 'GET';
-        $route->action = 'all';
-        $route->page = 'accounts';
-        $route->controller = 'accountsController';
-        $route->method = 'all';
-        $routes[] = $route;
-        
-
         //Show a Task
         //GET METHOD index.php?page=tasks&action=show
         $route = new route();
@@ -83,14 +74,7 @@ class routes
         $route->method = 'edit';
         $routes[] = $route;
 		
-		//Edit account
-		$route = new route();
-        $route->http_method = 'GET';
-        $route->action = 'update';
-        $route->page = 'edit_account';
-        $route->controller = 'accountsController';
-        $route->method = 'update';
-        $routes[] = $route;
+	
        
 		// Update task
 		$route = new route();
@@ -101,12 +85,21 @@ class routes
         $route->method = 'store';
         $routes[] = $route;
 		
-		// Update account
+		// edit account
+		$route = new route();
+        $route->http_method = 'GET';
+        $route->action = 'edit';
+        $route->page = 'edit_account';
+        $route->controller = 'accountsController';
+        $route->method = 'edit';
+        $routes[] = $route;
+		
+		//update account
 		$route = new route();
         $route->http_method = 'POST';
         $route->action = 'update';
         $route->page = 'show_account';
-        $route->controller = 'tasksController';
+        $route->controller = 'accountsController';
         $route->method = 'update';
         $routes[] = $route;
 		

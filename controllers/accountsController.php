@@ -39,13 +39,13 @@ class accountsController extends http\controller
     {
 
 		$upRecord = new useraccount();
-    	$upRecord->id = $_REQUEST['id'];
-		$upRecord->updated = date('Y-m-d H:m:s');
-		$upRecord->task = $_POST['task'];
-		$upRecord->complete = $_POST['complete'];
+    	$upRecord->id = $_POST['id'];
+		$upRecord->fname = $_POST['fname'];
+		$upRecord->lname = $_POST['lname'];
+		$upRecord->email = $_POST['email'];
 		$upRecord->save();
         //echo $upRecord;
-		header("Location: index.php?page=all_tasks&action=show&msg=ToDo%20Updated&id=". $_REQUEST['id']);
+		header("Location: index.php?page=show_account&action=show");
 
     }
 

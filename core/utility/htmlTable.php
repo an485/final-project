@@ -125,6 +125,7 @@ class htmlTable
 	public static function accountEditForm($innerArray)
 	{
     		$formHtml ="<p>" . $innerArray['username'] ."<br>";
+		    $formHtml .="<input type='hidden' name='id' id='id' value=". $innerArray['id'] ."><br>";
     		$formHtml .="<input type='text' name='fname' id='fname' value=". $innerArray['fname'] ."><br>";
 		    $formHtml .="<input type='text' name='lname' id='lname' value=". $innerArray['lname'] ."><br>";
 		    $formHtml .="<input type='email' name='email' id='email' value=". $innerArray['email'] ."><br>";
