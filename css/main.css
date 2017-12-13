@@ -86,3 +86,6 @@ footer {
 div#field {
     margin-bottom: 10px;
 }
+#updateForm input {
+    margin-bottom: 18px;
+}

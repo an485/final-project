@@ -2,7 +2,8 @@
 
  <section class="container" id="alltasks">
   	<div class="row">
-  		<div class="col-sm-12">
+  	<div class="col-sm-2"></div>
+  		<div class="col-sm-10">
   			<h1>My Tasks</h1>
   			<?php include('message.php'); ?>
   			
@@ -10,11 +11,12 @@
   		</div>	
   	</div>
   	<div class="row">
+  	<div class="col-sm-2"></div>
   		<div class="col-sm-2">
   			<a href="index.php?page=create&action=add_task"><button class="edit">Create a Task</button></a>
   		</div>
   		
-		<div class="col-sm-10"></div>
+		
   	</div>
   </section>
 

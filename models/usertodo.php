@@ -6,17 +6,16 @@ final class usertodo extends database\model
     public $userid;
     public $created;
 	public $updated;
-	//public $duedate;
     public $task;
     public $complete;
     protected static $modelName = 'usertodo';
 
- 
-	public function __construct()
+ public static function getTablename()
     {
-        $this->tableName = 'usertodos';
-	
+        $tableName = 'usertodos';
+        return $tableName;
     }
+
 }
 
 ?>

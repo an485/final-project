@@ -16,7 +16,7 @@ abstract class collection
     {
        $tableName = get_called_class();
         $sql = 'SELECT * FROM ' . $tableName . 'WHERE userid =' . $userid;
-        return self::getResults($sql);
+        return self::getResults2($sql);
     }
 
     //you can use this to run other queries in on classes that extend the collection class because this is protected

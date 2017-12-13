@@ -23,7 +23,7 @@ if (session_status() == PHP_SESSION_NONE) {
         <div class="col-sm-6"><img src="images/TM-Logo.png" alt=""/></div>
         <nav class="col-sm-6">
         <ul>
-         <li><a href="index.php">Home</a></li>
+         
          <?php 
 			if (isset($_SESSION["userID"])) {
 				echo '<li><a href="index.php?page=all_tasks&action=all">My Tasks</a></li>';
@@ -31,10 +31,11 @@ if (session_status() == PHP_SESSION_NONE) {
 				echo '<li><a href="index.php?page=homepage&action=logout">Logout</a></li>';
 			}
 				else {
+					echo '<li><a href="index.php">Home</a></li>';
 					echo '<li><a href="index.php?page=userlogin&action=login">Login</a></li>';
 				
 			}
-				// if session active then logout ?>
+				// if session active then show logout ?>
 		</ul>
         </nav>
      </div>

@@ -2,8 +2,9 @@
 
  <section class="container" id="alltasks">
   	<div class="row">
-  		<div class="col-sm-12">
-		<h5><a href="index.php?page=all_tasks&action=all"><< View All</a></h5>
+  	<div class="col-sm-2"></div>
+  		<div class="col-sm-8">
+		<h5><a href="index.php?page=all_tasks&action=all"><< Back to view all tasks</a></h5>
  			<p style="color:green;font-weight:bold;" class="message"><?php 
 				if (!empty($_REQUEST['msg'])) 
 			    echo $_REQUEST['msg'];  
@@ -13,6 +14,7 @@
   		</div>	
   	</div>
   	<div class="row">
+  	<div class="col-sm-2"></div>
   		<div class="col-sm-2">
   			<a href="index.php?page=edit_task&action=edit&id=<?php echo $data->id; ?> "><button class="edit">Edit ToDo Task</button></a>
   		</div>
@@ -21,7 +23,7 @@
    			 <button type="submit" form="form1" value="delete" class="delete">Delete</button>
 			</form>
   		</div>
-		<div class="col-sm-8"></div>
+		
   	</div>
   </section>
 

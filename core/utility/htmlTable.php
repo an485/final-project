@@ -4,7 +4,7 @@ namespace utility;
 //namespace MyProject\mvcName;
 
 class htmlTable
-{
+{	
     public static function genarateTableFromMultiArray($array)
     {
         if (!$array) {
@@ -18,19 +18,24 @@ class htmlTable
         $fieldHeadings = $array[0];
         $fieldHeadings = get_object_vars($fieldHeadings);
         $fieldHeadings = array_keys($fieldHeadings);
+			
         //this gets the page being viewed so that the table routes requests to the correct controller
         $referingPage = $_REQUEST['page'];
         foreach ($fieldHeadings as $heading) {
+			if($heading != 'userid' && $heading != 'tableName')
             $tableGen .= '<th>' . $heading . '</th>';
         }
         $tableGen .= '</tr>';
-        foreach ($array as $record) {
+        foreach ($array as $heading => $record) {
+			if($heading != 'userid' && $heading != 'tableName')
             $tableGen .= '<tr>';
             foreach ($record as $key => $value) {
 				
-                if ($key == 'id' && $key != 'userid') {
+             //  $key = self::columnNames($key);
+			if($key == 'id') 
+				{
                     $tableGen .= '<td><a href="index.php?page=' . $referingPage . '&action=show&id=' . $value . '">View</a></td>';
-                } else {
+                } else if($key != 'userid') {
                     $tableGen .= '<td>' . $value . '</td>';
                 }
             }
@@ -47,17 +52,16 @@ class htmlTable
     {
         
 		$tableGen = '<table border="1" cellpadding="10"><tr>';
-
         $tableGen .= '<tr>';
         foreach ($innerArray as $innerRow => $value) {
 			$innerRow = self::columnNames($innerRow);
-			if($innerRow != 'id' && $innerRow != 'userid' &&$innerRow != 'tableName')
+			if($innerRow != 'id' && $innerRow != 'userid' && $innerRow != 'tableName')
             $tableGen .= '<th>' . $innerRow . '</th>';
         }
         $tableGen .= '</tr>';
 
         foreach ($innerArray as $innerRow => $value) {
-			if($innerRow != 'id' && $innerRow != 'userid' &&$innerRow != 'tableName')
+			if($innerRow != 'id' && $innerRow != 'userid' && $innerRow != 'tableName')
             $tableGen .= '<td>' . $value . '</td>';
         }
 
@@ -122,13 +126,25 @@ class htmlTable
 		//echo $innerRow;
 	}
 	
+	
+	//view Account details
+	public static function accountValues($innerArray)
+	{
+    		$formHtml ="<p>User Name: <strong>" . $innerArray['username'] ."</strong><br>";
+		    $formHtml .="<p>First Name: <strong>" . $innerArray['fname'] ."</strong><br>";
+    		$formHtml .="<p>Last Name: <strong>" . $innerArray['lname'] ."</strong><br>";
+		    $formHtml .="<p>Email: <strong>" . $innerArray['email'] ."</strong><br>";
+			return $formHtml;
+		
+	}
+	//present Account in a Form
 	public static function accountEditForm($innerArray)
 	{
-    		$formHtml ="<p>" . $innerArray['username'] ."<br>";
+    		$formHtml ="<p>User Name: <strong>" . $innerArray['username'] ."</strong><br>";
 		    $formHtml .="<input type='hidden' name='id' id='id' value=". $innerArray['id'] ."><br>";
-    		$formHtml .="<input type='text' name='fname' id='fname' value=". $innerArray['fname'] ."><br>";
-		    $formHtml .="<input type='text' name='lname' id='lname' value=". $innerArray['lname'] ."><br>";
-		    $formHtml .="<input type='email' name='email' id='email' value=". $innerArray['email'] ."><br>";
+    		$formHtml .="<label>First Name:</label><br> <input type='text' name='fname' id='fname' value=". $innerArray['fname'] ."><br><br>";
+		    $formHtml .="<label>Last Name: </label><br><input type='text' name='lname' id='lname' value=". $innerArray['lname'] ."><br><br>";
+		    $formHtml .="<label>Email: </label><br><input type='email' name='email' id='email' value=". $innerArray['email'] ."><br><br>";
 		   // $formHtml .="<input type='password' name='password' id='password'><br>";
 			return $formHtml;
 		

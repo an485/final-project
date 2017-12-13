@@ -22,10 +22,8 @@ class tasksController extends http\controller
 
     public static function all()
     {
-        //$records = usertodos::findAll();
 		session_start();
 		$userID = $_SESSION["userID"];
-		//$records = usertodos::findAll();
 		$records = usertodos::findTasksbyID($userID);
         self::getTemplate('all_tasks', $records);
 
@@ -60,6 +58,7 @@ class tasksController extends http\controller
 
 		$upRecord = new usertodo();
     	$upRecord->id = $_REQUEST['id'];
+		date_default_timezone_set('America/New_York');
 		$upRecord->updated = date('Y-m-d H:m:s');
 		$upRecord->task = $_POST['task'];
 		$upRecord->complete = $_POST['complete'];
@@ -73,6 +72,7 @@ class tasksController extends http\controller
 
 		$upRecord = new usertodo();
     	$upRecord->userid = $_POST['userid'];
+		date_default_timezone_set('America/New_York');
 		$upRecord->created = date('Y-m-d H:m:s');
 		$upRecord->updated = NULL;
 		$upRecord->task = $_POST['task'];
