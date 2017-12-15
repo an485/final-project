@@ -16,7 +16,6 @@
   			<div class="row" id="field">
   				<div class="col-sm-3"><label> First Name:</label> </div><div class="col-sm-2"><input type="text" name="fname"></div>
 			</div>
-  			
   			<div class="row" id="field">
   				<div class="col-sm-3"><label>Last Name:</label> </div><div class="col-sm-2"><input type="text" name="lname"></div>
 			</div>

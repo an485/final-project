@@ -8,7 +8,7 @@
   		  <h1>Hello <?php echo $_SESSION["FName"]; ?>!</h1>
   			<h3> Edit your Profile and click 'Save'</h3>
   			<hr>
-  			
+  			<p><?php include('error.php'); ?></p><br>
   			<form action="index.php?page=show_account&action=update" method="post" id="updateForm">
     		<p><?php print utility\htmlTable::accountEditForm($data); ?></p>
 			<button type="submit" form="updateForm" value="store" class="edit">Save</button></form>

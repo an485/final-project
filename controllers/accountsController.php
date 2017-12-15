@@ -13,7 +13,6 @@ class accountsController extends http\controller
     }
 
     //to call the show function the url is index.php?page=task&action=list_task
-
     public static function all()
     {
 
@@ -75,7 +74,6 @@ class accountsController extends http\controller
 	
     public static function edit()
     {
-        
 		session_start();
 		$userID = $_SESSION["userID"];
 		$record = useraccounts::findOne($userID);
@@ -101,7 +99,6 @@ class accountsController extends http\controller
 				$_SESSION["FName"] =  $user['fname'];
 				header("Location: index.php?page=all_tasks&action=all");
                 //forward the user to the show all todos page
-                //print_r($_SESSION);
 			
             } else {
                 header("Location: index.php?page=userlogin&action=login&msg=Incorrect%20User%20Name%20or%20Password");

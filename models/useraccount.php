@@ -20,26 +20,27 @@ final class useraccount extends \database\model
     public function checkPassword($LoginPassword) {
         return password_verify($LoginPassword, $this->password);
     }
+	
+	//Validate fields
   public function validate()
-    {
-       
+    {	
 		if (isset($this->email) && $this->email == '') {
             return FALSE;
 
         }
-		if (isset($this->username) && $this->username == '') {
+		if (isset($this->username) && strlen($_POST['username']) == 0) {
             return FALSE;
 			
         }
-		if (isset($this->fname) && $this->fname == '') {
+		if (isset($this->fname) && strlen($_POST['fname']) == 0) {
             return FALSE;
 			
         }
-		if (isset($this->lname) && $this->lname == '') {
+		if (isset($this->lname) && strlen($_POST['lname']) == 0) {
             return FALSE;
 			
         }
-		if (isset($this->password) && $this->password == '') {
+		if (isset($this->password) && strlen($_POST['password']) <= 6) {
             return FALSE;
 			
         }

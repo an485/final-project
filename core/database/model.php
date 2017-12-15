@@ -18,12 +18,10 @@ abstract class model
     {
 		  //add validation for saving 
          if($this->validate() == FALSE) {
-	
-	     echo 'You cannot leave any fields blank and passwords must be more than 4 characters. ';
+	     echo 'All fields must be at least 1 character. Passwords must be more than 6 characters.';
 	     exit;
          }
-		
-		
+
 		 $db = dbConn::getConnection();
 		if (!isset($this->id)) {
            // echo "Insert";
@@ -60,8 +58,6 @@ abstract class model
       $modelName = static::$modelName;
        $tableName = $modelName::getTablename();
         $array = get_object_vars($this);
-		 array_pop($array);
-        array_shift($array);
         $comma = " ";
 		 $sql = 'UPDATE ' . $tableName . ' SET ';
         foreach ($array as $key => $value) {
