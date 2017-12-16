@@ -27,19 +27,6 @@ class routes
         //this adds the route to the routes array.
         $routes[] = $route;
 
-        //this is the index.php route for POST
-
-        //This is an examole of the post for index
-     /*   $route = new route();
-        $route->http_method = 'POST';
-        $route->action = 'create';
-        $route->page = 'homepage';
-        $route->controller = 'homepageController';
-        $route->method = 'create';
-        $routes[] = $route;*/
-
-         //show all tasks
-        //GET METHOD index.php?page=all_tasks&action=all
         $route = new route();
         $route->http_method = 'GET';
         $route->action = 'all';
@@ -124,16 +111,6 @@ class routes
         $route->controller = 'accountsController';
         $route->method = 'update';
         $routes[] = $route;
-		
-		/*//Accounts
-		$route = new route();
-        $route->http_method = 'POST';
-        $route->action = 'save';
-        $route->page = 'account';
-        $route->controller = 'accountsController';
-        $route->method = 'save'; */
-		//$route->method = 'test';
-       // $routes[] = $route;
 		
         //this is the route for the reg form
         $route = new route();

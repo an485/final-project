@@ -17,7 +17,6 @@ class tasksController extends http\controller
     }
 
     //to call the show function the url is index.php?page=task&action=list_task
-
     public static function all()
     {
 		session_start();

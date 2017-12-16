@@ -146,6 +146,7 @@ class htmlTable
 		    $formHtml .="<label>Last Name: </label><br><input type='text' name='lname' id='lname' value=". $innerArray['lname'] ."><br><br>";
 		    $formHtml .="<label>Email: </label><br><input type='email' name='email' id='email' value=". $innerArray['email'] ."><br><br>";
 		   // $formHtml .="<input type='password' name='password' id='password'><br>";
+		   //  This was not needed so removed
 			return $formHtml;
 		
 	}

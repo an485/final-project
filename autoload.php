@@ -4,10 +4,6 @@ class Manage
 public static function core($class)
 {
 
-//this is useful to see what class and namespace is being asked for
-//echo $class . '<br>';
-
-
 $path = 'core/' . str_replace('\\', '/', $class) . '.php';
 //this is useful to see what path is being asked for
 

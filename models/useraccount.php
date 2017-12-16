@@ -47,15 +47,11 @@ final class useraccount extends \database\model
 		else {
 			return TRUE;
 		} 
-
-		
-		
-		
 		
     }
 	
 
-
+//End
 
 }
 
