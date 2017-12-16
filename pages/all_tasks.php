@@ -15,12 +15,7 @@
   		<div class="col-sm-2">
   			<a href="index.php?page=create&action=add_task"><button class="edit">Create a Task</button></a>
   		</div>
-  		
-		
-  	</div>
+ </div>
   </section>
 
-
-<script src="js/scripts.js"></script>
-</body>
-</html>
+<?php include('footer.php') ?>

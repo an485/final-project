@@ -13,6 +13,7 @@ if (session_status() == PHP_SESSION_NONE) {
 <head>
 <meta charset="UTF-8">
 <title>ToDo List</title>
+<link rel="stylesheet" href="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/css/compiled.min.css?ver=4.4.0"/>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
 <link href="css/main.css" rel="stylesheet" type="text/css">
 </head>
