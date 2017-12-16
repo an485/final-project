@@ -1,6 +1,6 @@
 <footer class="footer-basic-centered">
 
-			<p class="footer-company-motto">Task Manager</p>
+			<p class="footer-company-motto"><img src="https://web.njit.edu/~an485/final-project/images/TM-Logo.png"></p>
 
 			<p class="footer-links">
 				
