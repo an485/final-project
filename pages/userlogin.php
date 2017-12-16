@@ -24,7 +24,6 @@
         </div>
 	</div>   
     <hr>
+    </section>
     
-
-</body>
-</html>
+     <?php include('footer.php') ?>
