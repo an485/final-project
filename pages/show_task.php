@@ -15,7 +15,7 @@
   	</div>
   	<div class="row">
   	<div class="col-sm-2"></div>
-  		<div class="col-sm-2">
+  		<div class="col-sm-3">
   			<a href="index.php?page=edit_task&action=edit&id=<?php echo $data->id; ?> "><button class="edit">Edit ToDo Task</button></a>
   		</div>
   		<div class="col-sm-1">
